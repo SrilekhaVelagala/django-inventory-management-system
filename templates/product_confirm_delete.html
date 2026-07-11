@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Delete Product - Inventory Management System{% endblock %}
+
+{% block content %}
+<div class="form-page">
+    <h2>Delete Product</h2>
+
+    <p class="confirm-text">
+        Are you sure you want to delete
+        <strong>"{{ product.name }}"</strong>? This action cannot be undone.
+    </p>
+
+    <!--
+        This form's ONLY purpose is to send a POST request when the
+        user clicks "Yes, Delete" - the actual deletion in
+        delete_product_view() only happens on POST, never on a
+        simple GET page-view, so no product is ever deleted by
+        accident (e.g. by a search engine crawler following a link).
+    -->
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'product_list' %}" class="btn btn-link">Cancel</a>
+    </form>
+</div>
+{% endblock %}

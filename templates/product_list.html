@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Products - Inventory Management System{% endblock %}
+
+{% block content %}
+<div class="product-list-page">
+    <div class="page-header">
+        <h2>Product List</h2>
+        <a href="{% url 'add_product' %}" class="btn btn-primary">+ Add Product</a>
+    </div>
+
+    <form method="GET" class="search-form">
+        <input
+            type="text"
+            name="q"
+            placeholder="Search product by name..."
+            value="{{ search_query }}">
+        <button type="submit" class="btn btn-secondary">Search</button>
+        {% if search_query %}
+            <a href="{% url 'product_list' %}" class="btn btn-link">Clear</a>
+        {% endif %}
+    </form>
+
+    {% if products %}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Price (₹)</th>
+                    <th>Supplier</th>
+                    <th>Added On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.supplier }}</td>
+                    <td>{{ product.created_at|date:"d M Y, h:i A" }}</td>
+                    <td class="actions">
+                        <a href="{% url 'update_product' product.pk %}" class="btn btn-small btn-secondary">Edit</a>
+                        <a href="{% url 'delete_product' product.pk %}" class="btn btn-small btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="empty-message">
+            {% if search_query %}
+                No products found matching "{{ search_query }}".
+            {% else %}
+                No products added yet. Click "Add Product" to get started.
+            {% endif %}
+        </p>
+    {% endif %}
+</div>
+{% endblock %}

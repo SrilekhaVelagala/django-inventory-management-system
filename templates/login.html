@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Login - Inventory Management System{% endblock %}
+
+{% block content %}
+<div class="form-page">
+    <h2>Login</h2>
+
+    <!--
+        method="POST" means the browser will send the form data in
+        the request BODY (not visible in the URL) - appropriate for
+        sensitive data like passwords.
+
+        {% csrf_token %} inserts a hidden, unique, one-time token
+        into the form. Django's CsrfViewMiddleware checks this token
+        on every POST request to make sure the form submission
+        really came from OUR site, and not from a malicious
+        third-party site tricking the user's browser (a Cross-Site
+        Request Forgery attack). Without this tag, Django would
+        reject the POST request with a 403 Forbidden error.
+    -->
+    <form method="POST" class="styled-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autofocus>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+    <p class="hint-text">Use the superuser credentials created with "python manage.py createsuperuser".</p>
+</div>
+{% endblock %}
