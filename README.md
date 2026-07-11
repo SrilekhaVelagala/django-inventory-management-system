@@ -66,7 +66,7 @@ inventory_management/
 │
 ├── templates/                    # HTML templates (project-level)
 │   ├── base.html                   # Shared layout (navbar, footer)
-│   ├── login.html
+│   ├── Login.html
 │   ├── dashboard.html
 │   ├── product_list.html
 │   ├── product_form.html           # Shared by Add & Update
@@ -196,7 +196,7 @@ All CRUD views use a single reusable `ProductForm` (a `ModelForm`), which auto-g
 
 ### 🔐 Login Page
 
-![Login Page](screenshots/login.png)
+![Login Page](screenshots/Login.png)
 
 ---
 
