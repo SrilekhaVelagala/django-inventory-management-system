@@ -194,16 +194,33 @@ All CRUD views use a single reusable `ProductForm` (a `ModelForm`), which auto-g
 
 ## 🖼️ Screenshots
 
-> _Add screenshots of the Login page, Dashboard, Product List, and Product Form here._
+### 🔐 Login Page
 
-| Page | Screenshot |
-|------|------------|
-| Login | `screenshots/login.png` |
-| Dashboard | `screenshots/dashboard.png` |
-| Product List | `screenshots/product_list.png` |
-| Add/Edit Product | `screenshots/product_form.png` |
+![Login Page](screenshots/login.png)
 
 ---
+
+### 🏠 Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+### 📋 Product List
+
+![Product List](screenshots/product_list.png)
+
+---
+
+### ➕ Add Product
+
+![Add Product](screenshots/product_form.png)
+
+---
+
+### ⚙️ Django Admin Panel
+
+![Django Admin Panel](screenshots/admin.png)
 
 ## 💬 Interview Questions Based on This Project
 
